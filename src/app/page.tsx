@@ -1,113 +1,176 @@
-import Image from "next/image";
-
+"use client"
+import img1 from "../assets/img1.png";
+import img2 from "../assets/img2.png";
+import img3 from "../assets/img3.png";
+import Card from "@/components/Card";
+import TicketCard from "@/components/TicketCard";
+import AdCard from "@/components/AdCard";
+import leftArrow from "../assets/leftArrow.png";
+import rightArrow from "../assets/rightArrow.png";
+import ticket1 from "../assets/Ticket_Mockup 3.png";
+import ticket2 from "../assets/ticket_img2.png";
+import React,{ useState } from "react";
 export default function Home() {
+  const [theme, setTheme] = useState("light");
+
+  const Cardsdata = [
+    {
+      id: 1,
+      image: img1,
+      title: "Sacramento River Cats",
+      totalEvent: 48,
+      sport: "baseball",
+    },
+    {
+      id: 2,
+      image: img2,
+      title: "Las Vegas Aviators",
+      totalEvent: 28,
+      sport: "baseball",
+    },
+    {
+      id: 3,
+      image: img3,
+      title: "new jersey devils",
+      totalEvent: 15,
+      sport: "ice hockey",
+    },
+    {
+      id: 4,
+      image: img2,
+      title: "Las Vegas Aviators",
+      totalEvent: 28,
+      sport: "baseball",
+    },
+  ];
+
+  const TicketCardsdata = [
+    {
+      id: 1,
+      title: "Las Vegas Aviators",
+      time: "OCT 15 | SUN | 4:30 PM",
+      address: "Las Vegas Ballpark, Las Vegas, Nevada",
+      btncontent: "Take Flight Collection",
+      image: ticket1,
+    },
+    {
+      id: 2,
+      title: "Sacramento River Cats",
+      time: "OCT 15 | SUN | 4:30 PM",
+      address: "Sutter Health Park, Sacramento, California",
+      btncontent: "Orange Collection",
+      image: ticket2,
+    },
+    {
+      id: 3,
+      title: "Las Vegas Aviators",
+      time: "OCT 15 | SUN | 4:30 PM",
+      address: "Las Vegas Ballpark, Las Vegas, Nevada",
+      btncontent: "Take Flight Collection",
+      image: ticket1,
+    },
+  ];
+
+  const handleTheme = () => {
+    setTheme((prev) => (prev == "dark" ? "light" : "dark"));
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div
+      className={`w-[100vw]  flex flex-col p-5 gap-4 justify-center 
+    ${theme == "dark" ? "text-[#fff]" : null} place-items-center 
+    ${theme == "dark" ? "bg-dark-primary" : "bg-light-primary"}`}
+    >
+      <button
+        className={` absolute  top-3 right-3 ${
+          theme == "dark" ? "bg-light-primary" : "bg-dark-primary"
+        } ${
+          theme == "dark" ? "text-[#000]" : "text-[#fff]"
+        } p-2 rounded-[0.5rem]`}
+        onClick={handleTheme}
+      >
+        Switch to {theme == "dark" ? "light" : "dark"}
+      </button>
+      <div className=" flex flex-col justify-center  place-items-center gap-[2rem] ">
+        <div className="w-[80.52px] h-[41px] border-b-2 border-solid self-start border-[#738FFF]">
+          <h3 className="text-2xl font-bold leading-9 text-left">Sports</h3>
+        </div>
+        <div className="flex flex-wrap justify-center  place-items-center gap-[1rem]">
+          {Cardsdata.map((item) => (
+            <Card
+              key={item.id}
+              theme={theme}
+              image={item.image.src}
+              title={item.title}
+              events={item.totalEvent}
+              sport={item.sport}
             />
-          </a>
+          ))}
+
+          <AdCard theme={theme} />
+        </div>
+        <button className=" w-[Fixed_(124.8px)px] h-[Hug_(46px)px] gap-[5px] px-[30px] py-2.5 rounded-[3px] bg-[#2C9CF0] text-[white] text-sm font-semibold leading-[25.89px] text-left shadow-[0px_4px_8px_0px_#0000000D]">
+          See More
+        </button>
+      </div>
+
+      <div
+        className={`w-[1240px] h-[918px] ticket-top-container flex flex-col gap-[2rem] place-items-center justify-center 
+      ${
+        theme == "dark"
+          ? "bg-[linear-gradient(180deg,#18282A_0%,#221A2C_100%)]"
+          : "bg-[linear-gradient(180deg,#F9F8FF_0%,#F3F9FF_100%)]"
+      }  `}
+      >
+        <div className="flex flex-col gap-[1.5rem]">
+          <h1 className="text-[50px]  font-bold leading-[52.5px] text-center">
+            Collection Spotlight
+          </h1>
+          <p className="w-[917px]  text-[0.95rem] leading-[22.65px] text-center ">
+            Discover extraordinary moments with our Spotlight Collection
+            metatickets—exclusive access to premium events for an unforgettable
+            experience. Grab yours today!
+          </p>
+        </div>
+
+        <div className="w-[1085.75px] h-[625px] ticket-container flex justify-center place-items-center  gap-20">
+          <img
+            src={leftArrow.src}
+            alt=""
+            className="w-[36.75px] cursor-pointer h-[49px] leftarrow"
+          />
+          <div className="flex gap-[2rem] ticket ">
+            {TicketCardsdata.map((item) => (
+              <TicketCard
+                key={item.id}
+                theme={theme}
+                time={item.time}
+                title={item.title}
+                address={item.address}
+                image={item.image.src}
+                btncontent={item.btncontent}
+              />
+            ))}
+          </div>
+          <img
+            src={rightArrow.src}
+            alt=""
+            className=" cursor-pointer w-[36.75px] h-[49px] rightarrow"
+          />
+        </div>
+        <div className=" gap-[1.5rem]  hidden ticket-bottom">
+          <img
+            src={leftArrow.src}
+            alt=""
+            className="w-[36.75px] h-[49px] cursor-pointer"
+          />
+          <img
+            src={rightArrow.src}
+            alt=""
+            className="w-[36.75px] h-[49px] cursor-pointer"
+          />
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
