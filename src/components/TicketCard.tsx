@@ -16,8 +16,8 @@ function TicketCard(props: {
         >
           <div className="flex flex-col justify-center place-items-center ">
             <img src={props.image} className="w-[226.1px] h-[401.25px] " />
-            <div className="w-[211px] h-0 text-[#A9ACB2]">
-              __ __ __ __ __ __ __ __ __ __ __ __{" "}
+            <div className="w-[211px] h-0 text-[#A9ACB2] flex justify-center">
+              __ __ __ __ __ __ __ __ __ __ __
             </div>
           </div>
   
