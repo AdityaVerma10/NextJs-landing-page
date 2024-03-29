@@ -6,7 +6,7 @@ function AdCard(props: { theme: string }) {
       className={`flex flex-col justify-center place-items-center gap-[0.8rem] w-[238.53px] h-[511px] 
     ${
       props.theme == "dark" ? "bg-dark-secondary" : "bg-light-secondary"
-    } opacity-[0px] shadow-[0px_4px_8px_0px_#0000000D]`}
+    }  shadow-[0px_4px_8px_0px_#0000000D]`}
     >
       <div
         className={`w-[218.4px] h-[491px] flex flex-col gap-[1.5rem] 

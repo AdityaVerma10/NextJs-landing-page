@@ -1,4 +1,4 @@
-import { StaticImageData } from "next/image";
+
 
 function Card(props: {
     theme: string;
@@ -12,12 +12,12 @@ function Card(props: {
         className={`flex flex-col justify-center place-items-center gap-[0.8rem] w-[238.53px] h-[511px]  
           ${
             props.theme == "dark" ? "bg-dark-secondary" : "bg-light-secondary"
-          } opacity-[0px] shadow-[0px_4px_8px_0px_#0000000D]`}
+          }  shadow-[0px_4px_8px_0px_#0000000D]`}
       >
         <img
           src={props.image}
           alt=""
-          className="w-[218.4px] h-[385.31px] gap-0 opacity-[0px] "
+          className="w-[218.4px] h-[385.31px] gap-0  "
         />
         <p className=" w-[187.2px] h-[21px] text-[17px] font-medium leading-[20.57px] self-start ml-3">
           {props.title}
